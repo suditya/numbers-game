@@ -1,0 +1,242 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container
+{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-container
+{
+    background-color: aqua;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+}
+.cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.right-container {
+    background-color: coral;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    /* flex-basis: 20%; */
+    flex-basis: calc(23% - 10px);
+    flex-wrap: wrap;
+    /* margin-right: 20px; */
+    align-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box {
+    /* flex-basis: calc(25% - 5px); */
+    height: 50%;
+    width: 50%;
+    margin-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 39%;
+    background-color: black;
+    color: white;
+    margin: 4px;
+    /* flex-basis: 33%; */ /* set the initial size of each box to 25% of the container width */
+    flex-grow: 1; /* allow the boxes to grow and fill the available space equally */
+}
+
+.box:hover {
+    background-color: #ddd;
+}
+
+.box.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+.flip-card {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    perspective: 1000px; /* add perspective to make the flip effect look more realistic */
+    width: 140px;
+    height: 211px;
+    margin: 6px;
+    /* display: inline-block; */
+    display: none;
+    cursor: pointer;
+  }
+ #showCards{
+    display: block;
+  
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+  }
+  @-webkit-keyframes fadeIn { 
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.5; }
+    80% { opacity: 0.9; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.5; }
+    80% { opacity: 0.9; }
+    100% { opacity: 1; }
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+/*   
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  } */
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flip-card-front {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: crimson;
+    color: white;
+    /* font-size: xxx-large; */
+    border: 16px solid white;
+  }
+  
+  .flip-card-back {
+    /* background-color: #000; */
+    /* color: #fff; */
+    transform: rotateY(180deg);
+  }
+  
+
+
+@media screen and (max-width: 768px) {
+    .box {
+      flex-basis: 50%; /* set the size of each box to 50% of the container width for screens smaller than 768px */
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    .box {
+      flex-basis: 100%; /* set the size of each box to 100% of the container width for screens smaller than 480px */
+    }
+  }
+
+  .button-30 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0
+    inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    }
+
+    .button-30:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px
+    -3px, #D6D6E7 0 -3px 0 inset;
+    }
+
+    .button-30:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0
+    inset;
+    transform: translateY(-2px);
+    }
+
+    .button-30:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+    }
+    .btn-container {
+        position: absolute;
+        z-index: 1000;
+        bottom: 8%;
+        padding: -1px;
+    }
+    
+    button#confirm-btn {
+        padding: 23px;
+        border-radius: 23px;
+        box-shadow: 4px -1px 11px 5px #ca3e3e;
+        font-size: 1em;
+        background-color: blue;
+        color: white;
+        font-weight: 900;
+        cursor: pointer;
+    }

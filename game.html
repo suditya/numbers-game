@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>documents</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="left-container">
+            <!-- <h1>left</h1> -->
+            <div class="cards">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Flip It!</h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>#</h2>
+                            <!-- <p>Back of Card 1</p> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- 
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Flip it!</h2>
+                           
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>#</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Flip it!</h2>
+                           
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>#</h2>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Flip it!</h2>
+
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>#</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Flip it!</h2>
+                            <!-- <p>Front of Card 1</p> -->
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>#</h2>
+                            <!-- <p>Back of Card 1</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for cards 3-5 -->
+
+
+        </div>
+        <div class="right-container">
+            <div class="row">
+                <div class="box">1</div>
+
+            </div>
+            <div class="row">
+                <div class="box">2</div>
+
+            </div>
+            <div class="row">
+                <div class="box">3</div>
+
+            </div>
+            <div class="row">
+                <div class="box">4</div>
+
+            </div>
+            <div class="row">
+                <div class="box">5</div>
+
+            </div>
+            <div class="row">
+                <div class="box">6</div>
+
+            </div>
+            <div class="row">
+                <div class="box">7</div>
+
+            </div>
+            <div class="row">
+                <div class="box">8</div>
+
+            </div>
+            <div class="row">
+                <div class="box">9</div>
+
+            </div>
+            <div class="row">
+                <div class="box">10</div>
+
+            </div>
+            <div class="row">
+                <div class="box">11</div>
+
+            </div>
+            <div class="row">
+                <div class="box">12</div>
+
+            </div>
+            <div class="row">
+                <div class="box">13</div>
+
+            </div>
+            <div class="row">
+                <div class="box">14</div>
+
+            </div>
+            <div class="row">
+                <div class="box">15</div>
+
+            </div>
+            <div class="row">
+                <div class="box">16</div>
+
+            </div>
+            <div class="row">
+                <div class="box">17</div>
+
+            </div>
+            <div class="row">
+                <div class="box">18</div>
+
+            </div>
+            <div class="row">
+                <div class="box">19</div>
+
+            </div>
+            <div class="row">
+                <div class="box">20</div>
+
+            </div>
+
+
+        </div>
+        <div class="btn-container">
+            <!-- HTML !-->
+            <!-- <button class="button-30" onclick="confirm()" role="button">Confirm </button> -->
+            <button id="confirm-btn" onclick="confirm()">get cards!</button>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    let boxSelected = 0;
+    let confirmBtnClicked = 0;
+    var selectedNums = []
+    var points = 0;
+    var flippedCards = 0;
+    confirmButtonPressed = false;
+
+
+    function confirm() {
+
+        if (selectedNums.length != 5)
+            alert("select at 5 boxes no less no more");
+        else {
+            ++confirmBtnClicked;
+            if (confirmBtnClicked > 1) return;
+            var numbersArray = [];
+            while (numbersArray.length < 5) {
+                var r = Math.floor(Math.random() * 20) + 1;
+                if (numbersArray.indexOf(r) === -1) numbersArray.push(r);
+            }
+            const cards = document.querySelectorAll('.flip-card');
+            cards.forEach((card, index) => {
+                const back = card.querySelector('.flip-card-back');
+                card.setAttribute("id", "showCards")
+                back.innerHTML = `<h2>${numbersArray[index]}</h2>`;
+                // if()
+            });
+        }
+    }
+
+    function isSelected(num) {
+        console.log(num)
+        for (let i = 0; i < 5; i++) {
+            if (selectedNums[i] == num) { ++points;  console.log("matched",points); return true; }
+        }
+        return false;
+    }
+
+
+
+    let flipCards = document.querySelectorAll('.flip-card-inner');
+    console.log(flipCards)
+    flipCards.forEach((card) => {
+        card.addEventListener('click', () => {
+            // if( confirmBtnClicked >=1 ) return ; 
+            console.log("flipped");
+            // transform: rotateY(180deg);
+            if (selectedNums.length == 5) {
+                card.style.transform = "rotateY(180deg)"
+                ++flippedCards;
+                console.log(card.querySelector((".flip-card-back")).innerText, " flip card back inner text")
+                if (isSelected(card.querySelector(".flip-card-back").innerText))
+                    card.style.backgroundColor = "green";
+                
+                if(flippedCards==3)
+                {
+                    setTimeout(()=>
+                    {
+                        alert(`points you have won ${points}`);
+                    },800);
+                }
+            }
+            else
+                alert("less than 5 boxes selected");
+        }
+        )
+    })
+    const boxes = document.querySelectorAll('.box');
+
+
+    boxes.forEach(box => {
+
+        box.addEventListener('click', () => {
+            // ++boxSelected;
+            if (confirmBtnClicked >= 1) return;
+            if (box.classList.contains("selected")) {
+
+                box.classList.remove("selected");
+                // selectedNums.remove(box.innerText)
+                let value = box.innerText;
+                selectedNums = selectedNums.filter(item => item !== value)
+                console.log(selectedNums.length)
+                // --boxSelected;
+            }
+            else {
+                if (selectedNums.length >= 5) {
+                    //pop-up 
+                    alert("more than 5", selectedNums.length)
+
+                }
+                else {
+                    box.classList.add("selected");
+                    selectedNums.push(box.innerText);
+                    console.log(selectedNums.length)
+                    // ++boxSelected;
+                }
+
+            }
+        });
+    });
+
+</script>
+
+</html>
