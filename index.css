@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-.container
+.myContainer
 {
     margin-top: 5px;
     display: flex;
@@ -45,9 +45,11 @@
     justify-content: center;
     /* flex-direction: column; */
     align-items: center;
+    position: relative;
+    padding: 4%;
 }
 
-.row {
+.myRow {
     display: flex;
     /* flex-basis: 20%; */
     flex-basis: calc(23% - 10px);
@@ -59,30 +61,35 @@
     justify-content: center;
 }
 
-.box {
-    /* flex-basis: calc(25% - 5px); */
-    height: 50%;
-    width: 50%;
-    margin-bottom: 10px;
-    background-color: #eee;
-    border: 1px solid #ccc;
-    border-radius: 45px;
+
+.box
+{
+    width: 19%;
+    /* position: absolute; */
+    top: 0;
+    display: flex;
+    left: 0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    padding: 39%;
+    align-content: center;
     background-color: black;
+    justify-content: center;
     color: white;
-    margin: 4px;
-    /* flex-basis: 33%; */ /* set the initial size of each box to 25% of the container width */
-    flex-grow: 1; /* allow the boxes to grow and fill the available space equally */
+    padding: 7.5%;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .box:hover {
-    background-color: #ddd;
+    background-color: white;
+    color: #000;
+    transform: scale(1.05);
 }
 
 .box.selected {
-    background-color: #007bff;
+    background-color: #24d669;
     color: #fff;
 }
 .flip-card {
@@ -142,6 +149,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
   }
   
   .flip-card-front {
@@ -165,14 +174,30 @@
 
 
 @media screen and (max-width: 768px) {
-    .box {
-      flex-basis: 50%; /* set the size of each box to 50% of the container width for screens smaller than 768px */
+    .right-container
+    {
+        justify-content: space-around;
     }
+    .box {
+      flex-basis: 37%; /* set the size of each box to 50% of the container width for screens smaller than 768px */
+      width: 48%;
+      top: 0px;
+      display: flex;
+      left: 0px;
+      place-content: center;
+      background-color: black;
+      color: white;
+      padding: 21px 0px;
+      margin-right: 0px;
+      margin-bottom: 2px;
+      border-radius: 50%;
+    }
+
   }
   
   @media screen and (max-width: 500px) {
     .box {
-      flex-basis: 100%; /* set the size of each box to 100% of the container width for screens smaller than 480px */
+      flex-basis: 37%; /* set the size of each box to 100% of the container width for screens smaller than 480px */
     }
   }
 
@@ -239,4 +264,69 @@
         color: white;
         font-weight: 900;
         cursor: pointer;
+    }
+
+    @keyframes tilt-shaking {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(5deg); }
+        50% { transform: rotate(0eg); }
+        75% { transform: rotate(-5deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+
+      @keyframes jump-shaking {
+        0% { transform: translateX(0) }
+        25% { transform: translateY(-9px) }
+        35% { transform: translateY(-9px) rotate(17deg) }
+        55% { transform: translateY(-9px) rotate(-17deg) }
+        65% { transform: translateY(-9px) rotate(17deg) }
+        75% { transform: translateY(-9px) rotate(-17deg) }
+        100% { transform: translateY(0) rotate(0) }
+      }
+      .end-screen {
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: black;
+        color: white;
+        padding: 53px;
+        border-radius: 20px;
+        text-align: center;
+        width: 50%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition:all 0.5s cubic-bezier(0.7, 0.04, 0, 1.09);
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.7, 0.04, 0, 1.09);
+        /* transition:all 0.5s cubic-bezier(0.7, 0.04, 0, 1.09); */
+        box-shadow: #e3fdda 0px 0px 20px 20px;
+        background-position: center;
+        background: url('https://media.giphy.com/media/fxsqOYnIMEefC/giphy.gif');
+        background-position: 1px 2px; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+    }
+    .close-end-screen {
+        z-index: 9999;
+        cursor: pointer;
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        border-radius: 12px;
+        padding: 10px;
+        font-size: 25px;
+        opacity: 0.5;
+        transition:all 0.5s cubic-bezier(0.7, 0.04, 0, 1.09);
+    }
+    .close-end-screen:hover
+    {
+        transform: rotate(179deg) ;
+        opacity: 1;
+        
     }
