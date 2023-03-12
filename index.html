@@ -6,11 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>documents</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+
 </head>
 
 <body>
-    <div class="container">
+    <nav id="myNav" class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #b771e6;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Number Game</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Play</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">2500$</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="myContainer">
 
 
         <div class="left-container">
@@ -82,98 +112,61 @@
 
         </div>
         <div class="right-container">
-            <div class="row">
-                <div class="box">1</div>
-
-            </div>
-            <div class="row">
-                <div class="box">2</div>
-
-            </div>
-            <div class="row">
-                <div class="box">3</div>
-
-            </div>
-            <div class="row">
-                <div class="box">4</div>
-
-            </div>
-            <div class="row">
-                <div class="box">5</div>
-
-            </div>
-            <div class="row">
-                <div class="box">6</div>
-
-            </div>
-            <div class="row">
-                <div class="box">7</div>
-
-            </div>
-            <div class="row">
-                <div class="box">8</div>
-
-            </div>
-            <div class="row">
-                <div class="box">9</div>
-
-            </div>
-            <div class="row">
-                <div class="box">10</div>
-
-            </div>
-            <div class="row">
-                <div class="box">11</div>
-
-            </div>
-            <div class="row">
-                <div class="box">12</div>
-
-            </div>
-            <div class="row">
-                <div class="box">13</div>
-
-            </div>
-            <div class="row">
-                <div class="box">14</div>
-
-            </div>
-            <div class="row">
-                <div class="box">15</div>
-
-            </div>
-            <div class="row">
-                <div class="box">16</div>
-
-            </div>
-            <div class="row">
-                <div class="box">17</div>
-
-            </div>
-            <div class="row">
-                <div class="box">18</div>
-
-            </div>
-            <div class="row">
-                <div class="box">19</div>
-
-            </div>
-            <div class="row">
-                <div class="box">20</div>
-
-            </div>
+            <!-- <div class="myRow"> -->
 
 
+            <!-- </div> -->
+
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+
+
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+
+
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+
+
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+
+
+            <div class="box">box</div>
+            <div class="box">box</div>
+            <div class="box">box</div>
+
+            <div class="box">box</div>
+            <div class="box">box</div>
         </div>
         <div class="btn-container">
             <!-- HTML !-->
             <!-- <button class="button-30" onclick="confirm()" role="button">Confirm </button> -->
             <button id="confirm-btn" onclick="confirm()">get cards!</button>
         </div>
-
+        <div class="end-screen">
+            <p>selcted numbers </p>
+            <h1>You won !</h1>
+            <button class="replay">
+                replay
+            </button>
+            <button class="close-end-screen" onclick="closePopup()">X</button>
+        </div>
     </div>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js
+"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <script>
     let boxSelected = 0;
@@ -183,6 +176,24 @@
     var flippedCards = 0;
     confirmButtonPressed = false;
 
+    function boxNumbering()
+    {
+        let boxes = document.querySelectorAll('.box');
+        boxes.forEach((box,index)=>
+        {
+            box.innerText = index+1;
+            console.log(index);
+        })
+    }
+
+    boxNumbering();
+
+    function closePopup() {
+        let end = document.querySelector('.end-screen');
+        console.log(end);
+        end.style.visibility = "hidden"
+        // end.style.opacity = "1"
+    }
 
     function confirm() {
 
@@ -209,12 +220,38 @@
     function isSelected(num) {
         console.log(num)
         for (let i = 0; i < 5; i++) {
-            if (selectedNums[i] == num) { ++points;  console.log("matched",points); return true; }
+            if (selectedNums[i] == num) { ++points; console.log("matched", points); return true; }
         }
         return false;
     }
 
+    function launchConfetti() {
+        var end = Date.now() + (15 * 1000);
+        console.log(end);
+        // go Buckeyes!
+        var colors = ['#bb0000', '#ffffff', '#cc0001'];
 
+        (function frame() {
+            confetti({
+                particleCount: 2,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: colors
+            });
+            confetti({
+                particleCount: 2,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: colors
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        }());
+    }
 
     let flipCards = document.querySelectorAll('.flip-card-inner');
     console.log(flipCards)
@@ -222,20 +259,46 @@
         card.addEventListener('click', () => {
             // if( confirmBtnClicked >=1 ) return ; 
             console.log("flipped");
+            // ++flippedCards;
             // transform: rotateY(180deg);
             if (selectedNums.length == 5) {
                 card.style.transform = "rotateY(180deg)"
                 ++flippedCards;
                 console.log(card.querySelector((".flip-card-back")).innerText, " flip card back inner text")
-                if (isSelected(card.querySelector(".flip-card-back").innerText))
+                if (isSelected(card.querySelector(".flip-card-back").innerText)) {
                     card.style.backgroundColor = "green";
-                
-                if(flippedCards==3)
-                {
-                    setTimeout(()=>
-                    {
-                        alert(`points you have won ${points}`);
-                    },800);
+                    // animation: jump-shaking 0.83s infinite;
+
+                }
+                // card.querySelector("flip-card.front").style.display = "none";
+                card.style.animation = "jump-shaking 1s 0.5s";
+
+                if (flippedCards == 3) {
+                    setTimeout(() => {
+                        // visibility: visible;
+                        // opacity: 1;
+                        let end = document.querySelector('.end-screen');
+                        console.log(end);
+                        end.style.visibility = "visible"
+                        end.style.opacity = "1"
+                        end.innerHTML = `<p>selcted numbers ${selectedNums}</p>
+                                        <h1>You won ${points}!</h1>
+                                        <button class="replay">
+                replay
+            </button>
+            <button class="close-end-screen" onclick="closePopup()">X</button>
+                                        `
+                        // var confettiElement = document.querySelector('body');
+                        // var confettiSettings = { target: confettiElement };
+                        // var confetti = new ConfettiGenerator(confettiSettings);
+
+
+                        // confetti.render();
+
+
+                        launchConfetti();
+
+                    }, 800);
                 }
             }
             else
@@ -276,6 +339,9 @@
             }
         });
     });
+
+
+    //confetti
 
 </script>
 
